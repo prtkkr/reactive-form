@@ -9,7 +9,7 @@ import { UsernameValidators } from './username.validators';
 })
 export class SignupFormComponent {
   form = new FormGroup({
-    username: new FormControl('',[  //sync validaors in single array
+    username: new FormControl('',[  //sync validators in single array
       Validators.required,
       Validators.minLength(3),
       UsernameValidators.cannotContainSpaces
@@ -22,5 +22,11 @@ export class SignupFormComponent {
 
   get user() {
     return this.form.get('username');
+  }
+
+  login() {
+    this.form.setErrors({
+      invalidLogin: true
+    })
   }
 }

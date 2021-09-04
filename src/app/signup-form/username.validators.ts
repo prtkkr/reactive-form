@@ -18,7 +18,7 @@ export class UsernameValidators {
                     resolve({ shouldBeUnique: true });
                 else
                     resolve(null);
-            }, 2000);
+            }, 1500);
         });
     }
 }
