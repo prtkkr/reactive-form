@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Form, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'form-builder',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-builder.component.css']
 })
 export class FormBuilderComponent implements OnInit {
+  form : any;
 
-  constructor() { }
+  //creating form using form builder
+  constructor(fb: FormBuilder) {
+    this.form = fb.group({
+      name: ['', Validators.required],
+      contact: fb.group({
+        email: [],
+        phone: []
+      }),
+      topics: fb.array([])
+    })
+  }
 
   ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
 
 }

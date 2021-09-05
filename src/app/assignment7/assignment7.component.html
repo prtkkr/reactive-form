@@ -1,0 +1,44 @@
+<form [formGroup]="resetForm">
+    <div class="form-group">
+        <label for="oldPassword">Old Password</label>
+        <input formControlName="oldPassword" id="oldPassword" type="password" placeholder="Old Password"
+            class="form-control" required="true" />
+        <div class="alert alert-danger" *ngIf="OldPassword?.touched && OldPassword?.invalid">
+            <div *ngIf="OldPassword?.errors?.required">
+                Old Password is required.
+            </div>
+            <div *ngIf="OldPassword?.errors?.invalidOldPassword">
+                Password is invalid.
+            </div>
+        </div>
+    </div>
+    <!-- New Password -->
+    <div class="form-group">
+        <label for="newPassword">New Password</label>
+        <input formControlName="newPassword" id="newPassassword" type="password" placeholder="New Password"
+            class="form-control">
+        <div class="alert alert-danger" *ngIf="NewPassword?.touched && NewPassword?.invalid">
+            <div *ngIf="NewPassword?.errors?.required">
+                New Password is required.
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input formControlName="confirmPassword" id="confirmPassword" type="password" placeholder="Confirm Password"
+            class="form-control" required="true">
+        <div class="alert alert-danger" *ngIf="ConfirmPassword?.touched && ConfirmPassword?.invalid">
+            <div *ngIf="ConfirmPassword?.errors?.required">
+                Confirm Password is required.
+            </div>
+        </div>
+        <div *ngIf="ConfirmPassword?.valid && resetForm.invalid && resetForm.errors?.passwordShouldMatch"
+            class="alert alert-danger">
+            Passwords do not match.
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-primary">Reset Password</button>
+    </div>
+
+</form>
